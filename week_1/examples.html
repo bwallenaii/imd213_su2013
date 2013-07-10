@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+
+	<title>Untitled 1</title>
+    <script>
+        //Putting names together
+        /*var firstName = prompt("What is your first name?");//"Fred";
+        var lastName = prompt("What is your last name?");//"Parkins";
+        var fullName = firstName + " " + lastName;
+        
+        alert("Hello, " + fullName);*/
+        
+        //Calculation
+        /*var num1 = Number(prompt("What is the first number?"));
+        var num2 = prompt("What is the second number?");
+        
+        num2 = Number(num2);
+        console.log(num1, num2); //always remove console.log when you are done with it
+        alert(num1 + num2);*/
+        
+        //User-error resistent
+        var num1 = Number("a");
+        var num2 = Number("a");
+        
+        while(isNaN(num1))
+        {
+            num1 = Number(prompt("What is the first number?")); 
+        }
+        
+        while(isNaN(num2))
+        {
+            num2 = Number(prompt("What is the second number?")); 
+        }
+        
+        alert(num1 + num2);
+        
+    </script>
+</head>
+
+<body>
+
+
+
+</body>
+</html>
