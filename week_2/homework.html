@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>The Cat</title>
+	<script type="text/javascript">
+
+		var cat = {
+
+			color: "black",
+			eyeColor: "yellow",
+			size: 0,
+			gender: "f",
+			name: "Sparkles",
+			sizeTypes: [
+				"small", 
+				"medium", 
+				"large", 
+				"xtra-large"
+			],
+
+			getSize: function(){
+				return this.sizeTypes[this.size];
+			},
+
+			sleep: function(){
+				alert("You see a " + this.getSize() + " ball of fur.");
+			},
+
+			eat: function(){
+				alert("yum!");
+			},
+
+			run: function(){
+				alert("A " + this.color + " streak flies across the floor.");
+			},
+
+			poop: function(){
+				alert(this.name + " feels better.");
+			}
+
+		};
+
+		cat.eat();
+		cat.run();
+		cat.sleep();
+		cat.poop();
+
+		alert("FELINE MUTATION!!!!!");
+
+		cat.name = "Rex";
+		cat.color = "turquoise";
+		cat.size = cat.sizeTypes.length - 1;
+
+		cat.eat();
+		cat.run();
+		cat.sleep();
+		cat.poop();
+	</script>
+</head>
+<body>
+
+</body>
+</html>
