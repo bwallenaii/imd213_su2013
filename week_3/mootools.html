@@ -1,0 +1,140 @@
+<html>
+<head>
+	<title>MooTools Example</title>
+	<style type="text/css">
+		.green{
+			background-color: #88ff88;
+		}
+		#content{
+			/*position: relative;*/
+		}
+		#content>div{
+			border: red dashed 1px;
+			/*position: absolute;*/
+			top: 0;
+		}
+
+		a[href^='http']{
+			color: red;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+	<script type="text/javascript" src="js/moomore.js"></script>
+	<script type="text/javascript">
+		document.addEvent("domready", function (){
+			
+			//var navLinks = $$("#navigation a"); //shortcut jQ-like approach
+			var nav = document.id("navigation");
+			var navLinks = nav.getElements("a");
+			var content = document.id("content");
+			var contentItems = content.getChildren("div");
+			contentItems.hide();
+			//console.log(nav, navLinks);
+			contentItems.set("reveal", {
+					mode: "horizontal",
+					duration: 3000
+				});
+			/*var fxs = [];
+			
+			for(var i = 0; i < contentItems.length;i++)
+			{
+				fxs.push(new Fx.Reveal(contentItems[i], {
+					mode: "horizontal",
+					duration: 3000
+				}));
+			}*/
+
+			nav.addEvent("mouseover", function(){
+				this.addClass("green");
+			});
+
+			nav.addEvent("mouseout", function(){
+				this.removeClass("green");
+			});
+
+			navLinks.addEvent("click", function(e){
+				e.stop(); //don't follow click
+				//contentItems.setStyle("display", "none");
+				
+				
+				var targName = this.get("data-contentid");
+				var showItem = content.getElementById(targName);
+				contentItems.dissolve();
+				showItem.reveal();
+
+				/*for(var i = 0; i < contentItems.length;i++)
+				{
+					if(contentItems[i] == showItem)
+					{
+						fxs[i].reveal();
+					}
+					else
+					{
+						fxs[i].dissolve();
+					}
+				}*/
+
+				/*var fadeOut = function(){
+					contentItems.setStyle("display", "none");
+					this.setStyle("display");
+					this.fade('in');
+				};
+				fadeOut.delay(500, showItem);*/
+				return false; //don't follow click, even on old ie version
+			});
+
+			$$("a[href^='http']").addEvent("click", function(e){
+				if(!confirm("You are leaving my site and I can't control what you see when you do that. Are you sure you want to go?"))
+				{
+					e.stop();
+					return false;
+				}
+				return true;
+			});
+		});
+
+		
+	</script>
+</head>
+<body>
+	<nav id="navigation">
+		<a href="#" data-contentid="home">Home</a>
+		<a href="#" data-contentid="about">About</a>
+		<a href="#" data-contentid="contact">Contact</a>
+	</nav>
+
+	<div id="content">
+	<div id="home">
+		<h2>Home</h2>
+		<p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt <a href="page.html">ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<div>
+			Jolly green giant.
+		</div>
+	</div>
+	<div id="about">
+		<h2>About</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div id="contact">
+		<h2>Contact</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	</div>
+
+</body>
+</html>
