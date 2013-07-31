@@ -1,0 +1,101 @@
+<html>
+<head>
+	<title>My Form</title>
+	<link rel="stylesheet" href="css/screen.css" />
+	<link rel="stylesheet" href="js/formcheck/theme/red/formcheck.css" type="text/css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+	<script type="text/javascript" src="js/moomore.js"></script>
+	<script type="text/javascript" src="js/formcheck/lang/en.js"> </script>
+	<script type="text/javascript" src="js/formcheck/formcheck-yui.js"> </script>
+	<script>
+		document.addEvent("domready", function(){
+			var fc = new FormCheck("lottery-form", {
+				submitByAjax: true,
+				ajaxResponseDiv: "thanks",
+				onValidateSuccess: function(){
+					document.id("lottery-form").dissolve();
+				},
+				display: {
+					showErrors: 1
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+
+<h2>Lottery Entry</h2>
+
+<form id="lottery-form" action="ajaxprocess.php" method="post" enctype="multipart/form-data">
+	<label>
+		First Name: <input type="text" name="first_name" class="validate['required','length[3,25]']" />
+	</label>
+	<label>
+		Larst Name: <input type="text" name="last_name" class="validate['required','length[3,25]']" />
+	</label>
+	<label>
+		Date of birth (dd/mm/yy): <input type="text" name="dob" />
+	</label>
+	<label>
+		How badly do you want to win?
+		<select name="need" class="validate['required']">
+			<option value="">Select an option</option>
+			<option value="0">Meh. . . </option>
+			<option value="2">It would be nice </option>
+			<option value="5">I really need it </option>
+			<option value="8">I would kill for it </option>
+			<option value="10">My grandma is having surgery </option>
+		</select>
+	</label>
+	<label>
+		Street: <input type="text" name="street" />
+	</label>
+	<label>
+		City: <input type="text" name="city" />
+	</label>
+	<label>
+		State: <input type="text" name="state" />
+	</label>
+	<label>
+		Zip: <input type="text" name="zip" />
+	</label>
+	<div>
+	<h4>What are your lucky numbers?</h4>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="0" />0
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="1" />1
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="2" />2
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="3" />3
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="4" />4
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="5" />5
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="6" />6
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="7" />7
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="8" />8
+	</label>
+	<label>
+		<input type="checkbox" name="lucky_numbers[]" value="9" />9
+	</label>
+	</div>
+	<input type="submit" />
+</form>
+<div id="thanks"></div>
+<small>Your chances of winning are smaller than this text.</small>
+
+</body>
+</html>
