@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		Untitled Document
+	</title>
+	<style>
+		.animal{
+			border: dashed black thin;
+			padding: 15px;
+		}
+		
+		.animal button{
+			display: block;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+	<script>
+		
+		
+		var Animal = new Class({
+	
+			Implements: [Options, Events],
+			
+			options:{
+				eyeColor: "black",
+				attackSound: "gr",
+				size: "small",
+				name: "animal"
+			},
+		
+			initialize: function(element, myOps)
+			{
+				this.element = document.id(element);
+				this.setOptions(myOps);
+				//collected my needed elements
+				this.nameTag = this.element.getElement(".name");
+				this.eatButton = this.element.getElement(".eat");
+				this.sleepButton = this.element.getElement(".sleep");
+				this.attackButton = this.element.getElement(".attack");
+				//used elements as needed
+				this.nameTag.set("text", this.options.name);
+				this.eatButton.addEvent("click", this.eat.bind(this));
+				this.sleepButton.addEvent("click", this.sleep.bind(this));
+				this.attackButton.addEvent("click", this.attack.bind(this));
+			},
+			
+			eat: function(){
+				alert("Yum!");
+			},
+			
+			attack: function(){
+				alert(this.options.attackSound);
+			},
+			
+			sleep: function(){
+				alert("ZZZZZZzzzzzzz. . .");
+			}
+		});
+		
+		var Cat = new Class({
+			
+			Extends: Animal,
+			
+			options: {
+				attackSound: "RRrrooowwrrr!!!"
+			},
+			
+			initialize: function(element, myOps){
+				this.parent(element, myOps);
+				//--------Create element using JS
+				//create a new button element that uses "Pet" as its content
+				this.petButton = new Element("button", {text:"Pet"});
+				//inject petButton into our container element
+				this.petButton.inject(this.element);
+				//--------END create button usng JS
+				
+				this.petButton.addEvent("click", this.pet.bind(this));
+			},
+			
+			sleep: function(){
+				alert("Puuurrrrrr. . .");
+			},
+			
+			pet: function(){
+				alert(this.options.name + " looks happy.");
+			}
+		});
+		
+		var Dog = new Class({
+			
+			Extends: Animal,
+			
+			options: {
+				attackSound: "Hoooowwl!!"
+			}
+		});
+		
+		document.addEvent("domready", function(){
+			var snow = new Cat("snowbell", {name:"Snowbell"});
+			var spike = new Dog("spike", {name:"Spikely"});
+			var roger = new Cat("roger", {name:"Patches"});
+		});
+	</script>
+</head>
+<body>
+
+<div id="snowbell" class="animal">
+	<span class="name"></span>
+	<button class="eat">Eat</button>
+	<button class="sleep">Sleep</button>
+	<button class="attack">Attack</button>
+</div>
+
+<div id="spike" class="animal">
+	<span class="name"></span>
+	<button class="eat">Eat</button>
+	<button class="sleep">Sleep</button>
+	<button class="attack">Attack</button>
+</div>
+
+<div id="roger" class="animal">
+	<span class="name"></span>
+	<button class="eat">Eat</button>
+	<button class="sleep">Sleep</button>
+	<button class="attack">Attack</button>
+</div>
+
+</body>
+</html>
