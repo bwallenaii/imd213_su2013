@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+
+#questions a{
+	display: block;
+	color: #0000ff;
+	margin-bottom: 12px;
+}
+
+#answer{
+	color: #990000;
+	font-size: 5em;
+}
