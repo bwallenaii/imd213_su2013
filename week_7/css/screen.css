@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.content{
+	position: relative;
+}
+.content>div{
+	border: red dashed 1px;
+	position: absolute;
+	top: 0;
+}
+
+.navigation .selected, ul li.selected{
+	color: red;
+}
+
+#module2 .content{
+	width: 150px;
+	height: 90px;
+	overflow: scroll;
+}

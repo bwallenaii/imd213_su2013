@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Nav Modules</title>
+	<link rel="stylesheet" href="css/screen.css" />
+	
+</head>
+<body>
+
+<div id="module1">
+	<div class="navigation">
+		<a href="#">Item 1</a>
+		<a href="#">Item 2</a>
+		<a href="#">Item 3</a>
+	</div>
+	<div class="content">
+		<div>
+			<h1>Item 1</h1>
+			<div>Some stuff</div>
+		</div>
+		<div>
+			<h1>Item 2</h1>
+		</div>
+		<div>
+			<h1>Item 3</h1>
+		</div>
+	</div>
+</div>
+<div id="module2">
+	<ul>
+		<li href="#">Item 1</li>
+		<li href="#">Item 2</li>
+		<li href="#">Item 3</li>
+	</ul>
+	<div class="content">
+		<div>
+			<h1>Item 1</h1>
+			<div>Some stuff</div>
+		</div>
+		<div>
+			<h1>Item 2</h1>
+		</div>
+		<div>
+			<h1>Item 3</h1>
+		</div>
+	</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+<script src="js/content-rotator.js"></script>
+<script>
+	new ContentRotator("module1");
+	new ContentRotator("module2", {
+		fixContainerHeight:false, 
+		navContSelect:"ul",
+		navItemSelect:"li"
+	});
+</script>
+</body>
+</html>
